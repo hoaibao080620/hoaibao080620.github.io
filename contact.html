@@ -63,8 +63,9 @@
                 <ul class="site-menu main-menu js-clone-nav ml-auto ">
                   <li><a href="index.html" class="nav-link">Home</a></li>
                   <li ><a href="trips.html" class="nav-link">Trips</a></li>
-                  <li class="active"><a href="contact.html" class="nav-link">Contact</a></li>
+                  <li  class="active"><a href="contact.html" class="nav-link">Contact</a></li>
                   <li><a href="about.html" class="nav-link">About</a></li>
+                  <li><a target="_blank" href="https://www.facebook.com/phulocvatoi/" class="nav-link">Fanpage</a></li>
                 </ul>
               </nav>
             </div>
@@ -81,7 +82,7 @@
           <div class="row align-items-center justify-content-center text-center">
             <div class="col-md-5" data-aos="fade-up">
               <h1 class="mb-3 text-white">Get In Touch</h1>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta veritatis in tenetur doloremque, maiores doloribus officia iste. Dolores.</p>
+              <p>While we’re good with smoke signals, there are simpler ways for us to get in touch</p>
               
             </div>
           </div>
@@ -105,30 +106,72 @@
        
         <div class="row">
           <div class="col-lg-8 mb-5" >
-            <form action="#" method="post">
+            <form method="post">
               <div class="form-group row">
                 <div class="col-md-6 mb-4 mb-lg-0">
-                  <input type="text" class="form-control" placeholder="First name">
+                  <input id="firstName" type="text" class="form-control" placeholder="First name">
                 </div>
                 <div class="col-md-6">
-                  <input type="text" class="form-control" placeholder="First name">
+                  <input id="lastName" type="text" class="form-control" placeholder="Last name">
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <input type="text" class="form-control" placeholder="Email address">
+                  <input type="email" id="email" class="form-control" placeholder="Email address">
                 </div>
               </div>
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <textarea name="" id="" class="form-control" placeholder="Write your message." cols="30" rows="10"></textarea>
+                  <textarea required name="" id="message" class="form-control" placeholder="Write your message." cols="30" rows="10"></textarea>
                 </div>
               </div>
               <div class="form-group row">
                 <div class="col-md-6 mr-auto">
-                  <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5" value="Send Message">
+      
+                  <button type="button" id="btn-submit" class="btn btn-block btn-primary text-white py-3 px-5 " data-toggle="modal" data-target="#exampleModal">
+                    Send
+                  </button>
+                  <script>
+                    var button = document.getElementById('btn-submit');
+                    button.addEventListener('click',function() {
+                      var firstName = document.getElementById('firstName');
+                      var lastName = document.getElementById('lastName');
+                      var email = document.getElementById('email');
+                      var message = document.getElementById('message');
+                      var noti = document.getElementById('modal-body');
+                      if(firstName.value !== '' && lastName.value !=='' && email.value !=='' && message.value !=='') {
+                        noti.innerText = 'Thank you! We will contact you as soon as possible'
+                        firstName.value = '';
+                        lastName.value = '';
+                        email.value = '';
+                        message.value = '';
+                      }
+                      else {
+                        noti.innerText = 'Please fill all field!'
+                      }
+                    });
+                  </script>
+                  <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Notification</h5>
+                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                          </button>
+                        </div>
+                        <div class="modal-body" id="modal-body">
+                          
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-primary" data-dismiss="modal">Ok</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </form>
@@ -150,85 +193,6 @@
       </div>
     </div> <!-- END .site-section -->
 
-    <div class="site-section">
-
-      <div class="container">
-
-        <div class="row justify-content-center text-center">
-          <div class="col-md-10">
-            <div class="heading-39101 mb-5">
-              <span class="backdrop text-center">Testimonials</span>
-              <span class="subtitle-39191">Testimony</span>
-              <h3>Happy Customers</h3>
-            </div>
-          </div>
-        </div>
-
-        <div class="owl-carousel slide-one-item">
-          <div class="row">
-            <div class="col-md-6">
-
-              <div class="testimonial-39191 d-flex">
-                <div class="mr-4">
-                  <img src="images/person_1.jpg" alt="Image" class="img-fluid">
-                </div>
-                <div>
-                <blockquote>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, accusamus, facilis! Placeat praesentium alias porro aperiam facilis accusantium veniam?&rdquo;</blockquote>
-                <p>&mdash; John Doe</p>
-                </div>
-              </div>    
-              
-            </div>
-
-            <div class="col-md-6">
-
-              <div class="testimonial-39191 d-flex">
-                <div class="mr-4">
-                  <img src="images/person_2.jpg" alt="Image" class="img-fluid">
-                </div>
-                <div>
-                <blockquote>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, accusamus, facilis! Placeat praesentium alias porro aperiam facilis accusantium veniam?&rdquo;</blockquote>
-                <p>&mdash; John Doe</p>
-                </div>
-              </div>    
-              
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-md-6">
-
-              <div class="testimonial-39191 d-flex">
-                <div class="mr-4">
-                  <img src="images/person_1.jpg" alt="Image" class="img-fluid">
-                </div>
-                <div>
-                <blockquote>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, accusamus, facilis! Placeat praesentium alias porro aperiam facilis accusantium veniam?&rdquo;</blockquote>
-                <p>&mdash; John Doe</p>
-                </div>
-              </div>    
-              
-            </div>
-
-            <div class="col-md-6">
-
-              <div class="testimonial-39191 d-flex">
-                <div class="mr-4">
-                  <img src="images/person_2.jpg" alt="Image" class="img-fluid">
-                </div>
-                <div>
-                <blockquote>&ldquo;Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore, accusamus, facilis! Placeat praesentium alias porro aperiam facilis accusantium veniam?&rdquo;</blockquote>
-                <p>&mdash; John Doe</p>
-                </div>
-              </div>    
-              
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </div>
 
     <footer class="site-footer bg-light">
       <div class="container">

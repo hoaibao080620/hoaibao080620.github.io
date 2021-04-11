@@ -1929,3 +1929,9 @@ h1, h2, h3, h4, h5,
       transition: 1s ease all;
       transform: scale(1.12);
     }
+
+    @media only screen and (max-width: 900px) {
+      .icon-menu {
+        color: #000!important;
+      }
+    }
