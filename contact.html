@@ -106,7 +106,7 @@
        
         <div class="row">
           <div class="col-lg-8 mb-5" >
-            <form method="post">
+            <form method="post" id="contact-form">
               <div class="form-group row">
                 <div class="col-md-6 mb-4 mb-lg-0">
                   <input id="firstName" type="text" class="form-control" placeholder="First name">
@@ -118,7 +118,7 @@
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <input type="email" id="email" class="form-control" placeholder="Email address">
+                  <input type="text" id="email" class="form-control" placeholder="Phone number">
                 </div>
               </div>
 
@@ -133,7 +133,13 @@
                   <button type="button" id="btn-submit" class="btn btn-block btn-primary text-white py-3 px-5 " data-toggle="modal" data-target="#exampleModal">
                     Send
                   </button>
+                  <script type="text/javascript"
+        src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
+</script>
                   <script>
+                    (function(){
+      emailjs.init("user_hSG1Zx8bkaslezu0Tt9At");
+   })();
                     var button = document.getElementById('btn-submit');
                     button.addEventListener('click',function() {
                       var firstName = document.getElementById('firstName');
@@ -143,7 +149,21 @@
                       var noti = document.getElementById('modal-body');
                       if(firstName.value !== '' && lastName.value !=='' && email.value !=='' && message.value !=='') {
                         noti.innerText = 'Thank you! We will contact you as soon as possible'
-                        firstName.value = '';
+                        
+                        
+                        var templateParams = {
+                          name: `${firstName.value} ${lastName.value}`,
+                          phone: `${email.value}`,
+                          message: `${message.value}`
+                        };
+
+                        emailjs.send('service_l54maq1', 'template_aeztpnj', templateParams)
+                          .then(function (response) {
+                            console.log('SUCCESS!', response.status, response.text);
+                          }, function (error) {
+                            console.log('FAILED...', error);
+                          });
+                          firstName.value = '';
                         lastName.value = '';
                         email.value = '';
                         message.value = '';
@@ -277,6 +297,11 @@
     <script src="js/aos.js"></script>
 
     <script src="js/main.js"></script>
+    
+<script type="text/javascript">
+   
+  
+</script>
 
   </body>
 
