@@ -118,9 +118,10 @@
 
               <div class="form-group row">
                 <div class="col-md-12">
-                  <input type="text" id="email" class="form-control" placeholder="Phone number">
+                  <input type="text" id="email" class="form-control" value="+84" placeholder="+84......">
                 </div>
               </div>
+
 
               <div class="form-group row">
                 <div class="col-md-12">
@@ -133,6 +134,10 @@
                   <button type="button" id="btn-submit" class="btn btn-block btn-primary text-white py-3 px-5 " data-toggle="modal" data-target="#exampleModal">
                     Send
                   </button>
+                  <script
+  src="https://code.jquery.com/jquery-3.6.0.js"
+  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+  crossorigin="anonymous"></script>
                   <script type="text/javascript"
         src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
 </script>
@@ -150,7 +155,27 @@
                       if(firstName.value !== '' && lastName.value !=='' && email.value !=='' && message.value !=='') {
                         noti.innerText = 'Thank you! We will contact you as soon as possible'
                         
-                        
+                        var SID = "AC537ef6a77d79291de94629dcdc471b7c"
+                        var Key = "5f425552a075565e5808bc668d6c7356"
+
+                        $.ajax({
+                          type: 'POST',
+                          url: 'https://api.twilio.com/2010-04-01/Accounts/' + SID + '/Messages.json',
+                          data: {
+                            "To": `${email.value}`,
+                            "From": "+15124101385",
+                            "Body": "Thanks for using our services, we will contact you as soon as possible."
+                          },
+                          beforeSend: function (xhr) {
+                            xhr.setRequestHeader("Authorization", "Basic " + btoa(SID + ':' + Key));
+                          },
+                          success: function (data) {
+                            console.log(data);
+                          },
+                          error: function (data) {
+                            console.log(data);
+                          }
+                        });
                         var templateParams = {
                           name: `${firstName.value} ${lastName.value}`,
                           phone: `${email.value}`,
@@ -211,6 +236,7 @@
         </div>
         
       </div>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3825.9420056585914!2d107.59792081481322!3d16.47847398862919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3141a11fbb45b643%3A0xe5d67c06d4f551ee!2zVHLGsOG7nW5nIER1IEzhu4tjaCDEkOG6oWkgaOG7jWMgSHXhur8!5e0!3m2!1sen!2s!4v1618321609022!5m2!1sen!2s" width="100%" height="700" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div> <!-- END .site-section -->
 
 
