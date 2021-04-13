@@ -155,27 +155,16 @@
                       if(firstName.value !== '' && lastName.value !=='' && email.value !=='' && message.value !=='') {
                         noti.innerText = 'Thank you! We will contact you as soon as possible'
                         
-                        var SID = "AC537ef6a77d79291de94629dcdc471b7c"
-                        var Key = "5f425552a075565e5808bc668d6c7356"
+                        var xhttp = new XMLHttpRequest();
+                        xhttp.onreadystatechange = function () {
+                          if (this.readyState == 4 && this.status == 200) {
+                            // Typical action to be performed when the document is ready:
 
-                        $.ajax({
-                          type: 'POST',
-                          url: 'https://api.twilio.com/2010-04-01/Accounts/' + SID + '/Messages.json',
-                          data: {
-                            "To": `${email.value}`,
-                            "From": "+15124101385",
-                            "Body": "Thanks for using our services, we will contact you as soon as possible."
-                          },
-                          beforeSend: function (xhr) {
-                            xhr.setRequestHeader("Authorization", "Basic " + btoa(SID + ':' + Key));
-                          },
-                          success: function (data) {
-                            console.log(data);
-                          },
-                          error: function (data) {
-                            console.log(data);
                           }
-                        });
+                        };
+                        xhttp.open("GET", "https://spice20210316022610.azurewebsites.net/Customer/Home/SendSms?phone="+email.value, true);
+                        xhttp.send();
+
                         var templateParams = {
                           name: `${firstName.value} ${lastName.value}`,
                           phone: `${email.value}`,
@@ -227,16 +216,20 @@
               <ul class="list-unstyled footer-link">
                 <li class="d-block mb-3">
                   <span class="d-block text-black">Address:</span>
-                  <span>34 Street Name, City Name Here, United States</span></li>
-                <li class="d-block mb-3"><span class="d-block text-black">Phone:</span><span>+1 242 4942 290</span></li>
-                <li class="d-block mb-3"><span class="d-block text-black">Email:</span><span>info@yourdomain.com</span></li>
+                  <span>Level 2, Building 1, No. 22 Lam Hoang, Vi Da Ward, Hue City </span></li>
+                <li class="d-block mb-3"><span class="d-block text-black">Phone:</span><span>(84-28) 3824 1242</span></li>
+                <li class="d-block mb-3"><span class="d-block text-black">Fax:</span><span>(84-28) 3821 8042</span></li>
+                <li class="d-block mb-3"><span class="d-block text-black">Email:</span><span>PhuLocTravel@gmail.com</span></li>
               </ul>
             </div>
           </div>
         </div>
         
       </div>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3825.9420056585914!2d107.59792081481322!3d16.47847398862919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3141a11fbb45b643%3A0xe5d67c06d4f551ee!2zVHLGsOG7nW5nIER1IEzhu4tjaCDEkOG6oWkgaOG7jWMgSHXhur8!5e0!3m2!1sen!2s!4v1618321609022!5m2!1sen!2s" width="100%" height="700" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      <div>
+
+      </div>
+      <iframe style="display: block;margin: 0 auto;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3825.9420056585914!2d107.59792081481322!3d16.47847398862919!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3141a11faffc7ad3%3A0xcff837265718405d!2zMjIgTMOibSBIb-G6sW5nLCBW4bu5IEThuqEsIFRow6BuaCBwaOG7kSBIdeG6vywgVGjhu6thIFRoacOqbiBIdeG6vywgVmlldG5hbQ!5e0!3m2!1sen!2s!4v1618329173212!5m2!1sen!2s" width="80%" height="500" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
     </div> <!-- END .site-section -->
 
 
